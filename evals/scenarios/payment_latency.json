@@ -1,0 +1,28 @@
+{
+  "name": "payment_service_latency_spike",
+  "incident": {
+    "issue_text": "Payment API latency spike affecting checkout transactions with repeated timeouts.",
+    "service_name": "payment-service",
+    "severity": "high",
+    "environment": "production",
+    "correlation_id": "corr-payment-001",
+    "alert_id": "alert-payment-latency"
+  },
+  "expected_likely_cause_categories": [
+    "dependency_timeout",
+    "performance_issue"
+  ],
+  "expected_output_fields": [
+    "summary_of_issue",
+    "issue_breakdown",
+    "actions_taken",
+    "human_approvals",
+    "next_steps",
+    "issue_summary",
+    "evidence_used",
+    "likely_cause",
+    "confidence_level",
+    "recommended_next_actions",
+    "human_approval_status"
+  ]
+}

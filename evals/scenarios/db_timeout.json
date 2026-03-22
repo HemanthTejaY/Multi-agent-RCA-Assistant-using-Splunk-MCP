@@ -1,0 +1,27 @@
+{
+  "name": "database_timeout_dependency_issue",
+  "incident": {
+    "issue_text": "Inventory refresh jobs are failing due to repeated database timeouts and downstream latency.",
+    "service_name": "inventory-api",
+    "severity": "critical",
+    "environment": "production",
+    "correlation_id": "corr-db-900",
+    "alert_id": "alert-db-timeout"
+  },
+  "expected_likely_cause_categories": [
+    "dependency_timeout"
+  ],
+  "expected_output_fields": [
+    "summary_of_issue",
+    "issue_breakdown",
+    "actions_taken",
+    "human_approvals",
+    "next_steps",
+    "issue_summary",
+    "evidence_used",
+    "likely_cause",
+    "confidence_level",
+    "recommended_next_actions",
+    "human_approval_status"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "repeated_authentication_failure",
+  "incident": {
+    "issue_text": "Users report repeated authentication failures after a login issue surfaced this morning.",
+    "service_name": "identity-service",
+    "severity": "high",
+    "environment": "production",
+    "correlation_id": "corr-auth-042",
+    "alert_id": "alert-auth-failures"
+  },
+  "expected_likely_cause_categories": [
+    "authentication_configuration"
+  ],
+  "expected_output_fields": [
+    "summary_of_issue",
+    "issue_breakdown",
+    "actions_taken",
+    "human_approvals",
+    "next_steps",
+    "issue_summary",
+    "evidence_used",
+    "likely_cause",
+    "confidence_level",
+    "recommended_next_actions",
+    "human_approval_status"
+  ]
+}

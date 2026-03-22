@@ -1,0 +1,48 @@
+flowchart TD
+    A["User / Support Engineer submits incident"] --> B["CLI or Streamlit Entry"]
+    B --> C["Config Loader (.env)"]
+    C --> D["LangGraph Supervisor / Router"]
+
+    D --> E["Load Long-Term Memory from Postgres"]
+    D --> F["Load Short-Term State from Redis"]
+    D --> G{"Investigation Needed?"}
+
+    G -- No --> N["RCA / Documentation Agent"]
+
+    G -- Yes --> H["MCP Client Layer"]
+    H --> H1["HTTP MCP Mode"]
+    H --> H2["STDIO MCP Mode"]
+    H --> H3["Mock MCP Mode"]
+
+    H --> I["Tool Discovery via list_tools"]
+    I --> J["Dynamic MCP Tool Registry"]
+    J --> K["ReAct Investigation Agent"]
+
+    K --> L{"Broad / Sensitive MCP Tool?"}
+    L -- No --> M["Invoke Scoped MCP Tool"]
+    L -- Yes --> P["Human Approval Gate"]
+
+    P -- Approved --> M
+    P -- Rejected or Unavailable --> Q["Jira Escalation"]
+
+    M --> R["Evidence Summaries + Findings"]
+    R --> N["RCA / Documentation Agent"]
+
+    N --> S["Structured RCA Output"]
+    S --> T{"Final Human Approval?"}
+
+    T -- Approved --> U["Persist Case + RCA"]
+    T -- Rejected / Pending / Blocked --> Q
+
+    Q --> U["Persist Case + RCA + Escalation"]
+
+    U --> U1["Postgres: cases, findings, approvals, RCA reports, steps"]
+    U --> U2["Redis: graph state snapshots / working memory"]
+
+    U --> V["Final Output"]
+    V --> V1["Summary of Issue"]
+    V --> V2["Issue Breakdown"]
+    V --> V3["Actions Taken"]
+    V --> V4["Human Approvals"]
+    V --> V5["Next Steps"]
+    V --> V6["Optional Jira Ticket Reference"]
